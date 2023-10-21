@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+---
+
+# TODOS
+- Exportar en PDF el mapa
+- Modificar el título por "Atlas Linguistico Interactivo de los Acentos de Andalucía"
+- A la tarjeta de cada código postal podemos poner el nombre del pueblo y añadir comentarios en líneas.
+- Agrupar estos códigos postales por Pueblos. 
