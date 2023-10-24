@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/atlas-anda/static/css/main.4fbe2b77.css",
-    "main.js": "/atlas-anda/static/js/main.00b34cd3.js",
+    "main.js": "/atlas-anda/static/js/main.a839235f.js",
     "index.html": "/atlas-anda/index.html",
     "main.4fbe2b77.css.map": "/atlas-anda/static/css/main.4fbe2b77.css.map",
-    "main.00b34cd3.js.map": "/atlas-anda/static/js/main.00b34cd3.js.map"
+    "main.a839235f.js.map": "/atlas-anda/static/js/main.a839235f.js.map"
   },
   "entrypoints": [
     "static/css/main.4fbe2b77.css",
-    "static/js/main.00b34cd3.js"
+    "static/js/main.a839235f.js"
   ]
 }
