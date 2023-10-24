@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip} from "@mui/material"; 
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-//https://www.npmjs.com/package/react-h5-audio-player
 
 
 const CodeDetails = ({place, selected, refProp}) => {
