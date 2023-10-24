@@ -8,7 +8,7 @@
         <AppBar position="static">
             <Toolbar  sx={{display:"flex", justifyContent: 'space-between', width:'100%'}}>
                 <Typography variant="h5">
-                    Atlas Linguístico de Acentos de Andalucía
+                Atlas Lingüístico Interactivo de los Acentos de Andalucía
                 </Typography>
                 <Box sx={{display:'flex', flexDirection:'row'}}>
                     <InfoIcon/>

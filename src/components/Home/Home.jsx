@@ -3,63 +3,66 @@ import { CssBaseline,  Grid, Radio, RadioGroup, FormControlLabel, FormControl, F
 import Header from "../Header/Header";
 import Searcher from "../Searcher/Searcher";
 import words from '../Map/words.json'
+import phenomenoms from '../../files/phenomenoms.json'
 
 
 const Home = () => {
+    
     const searchableWords = words.map((value, key)=>{
         return value.word;
     });
 
-    const [items, setItems] = useState(searchableWords);
+    const searchablePhenomns = phenomenoms.map((value, key) => {
+        return {"k": value.key, "w":value.word};
+    });
 
+    const [items, setItems] = useState(searchableWords);
+    const [phenoms, setPhenoms] = useState(searchablePhenomns);
+    const [value, setValue] = useState('palabra');
 
     const requestSearch = (searchedVal) => {
-            const filteredItems = searchableWords.filter((item) => {
+        const filteredItems = searchableWords.filter((item) => { 
             return item.toLowerCase().includes(searchedVal.toLowerCase());
         });
+        
+        const filteredPhenoms = searchablePhenomns.filter((item) => { 
+            return item.w.toLowerCase().includes(searchedVal.toLowerCase()); 
+        });
+        
         setItems(filteredItems);
-        console.log(searchedVal);
-        console.log(items);
+        setPhenoms(filteredPhenoms);
+        console.log(phenoms);
     };
 
-    const cancelSearch = () => {
-        //setSearched("");
-        //requestSearch(searched);
-    };
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    }    
 
     
-    const [value, setValue] = useState('palabra');
     return(
         <>
         <CssBaseline />
         <Header />
         
         <Grid container fixed mt={2} spacing={3}>
-            <Grid container row xs={12} sx={{border: '3px green solid' }}>
-                <Grid xs={12} pl={6} sm={6} md={6}>
-                    <FormControl xs={6}>
-                        <TextField
+            <Grid container row xs={12}>
+                <Grid xs={12} pl={6} sm={6} md={6} mb={3}>
+                    <TextField
+                            fullWidth
                             onChange={(event) => {
                                 console.log(event.target.value);
                                 requestSearch(event.target.value);
                               }}
                             label="Búsqueda de palabra" variant="standard">
                             
-                        </TextField>
-                        {/* <SearchBar
-                            value={searched}
-                            onChange={(searchVal) => requestSearch(searchVal)}
-                            onCancelSearch={() => cancelSearch()}
-                            placeholder="Busca la palabra"
-                        />         */}
-                    </FormControl>
+                    </TextField>
+                    
                     
                 </Grid>
-                <Grid xs={12} sm={6} md={6} pl={3}>
+                <Grid xs={12} sm={6} md={6} pl={6}>
                     <FormControl xs={6}>
-                        <FormLabel id="tipo-mapa">Tipo de atlas</FormLabel>
-                        <RadioGroup row aria-labelledby="tipo-mapa" defaultValue="palabra" name="radio-buttons-group">
-                        <FormControlLabel value="palabra" control={<Radio />} label="Palabra" />
+                        <RadioGroup row aria-labelledby="tipo-mapa" defaultValue="{value}" value={value} onChange={handleChange} name="radio-buttons-group">
+                            <FormControlLabel value="palabra" control={<Radio />} label="Palabra" />
                             <FormControlLabel value="fenomeno" control={<Radio />} label="Fenómeno" />
                         </RadioGroup>
                     </FormControl>
@@ -67,7 +70,8 @@ const Home = () => {
             </Grid>
             
             <Grid item xs={12} pl={3}>
-                <Searcher items={items}/>
+                {(value === 'palabra') && <Searcher items={items} type={value}/>}
+                {(value === 'fenomeno') && <Searcher items={phenoms} type={value}/>}
             </Grid>
             
         </Grid>

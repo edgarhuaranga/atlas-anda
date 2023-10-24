@@ -1,0 +1,1696 @@
+[
+    {
+        "key":"ph1",
+        "word": " F1 de /i/ (heat map de 200 a 500 Hz más o menos)",
+        "variations": [
+            312,
+            200,
+            374,
+            493,
+            220
+        ]
+    },
+    {
+        "key":"ph2",
+        "word": " F2 de /i/ (heat map de 1800 a 2500 Hz más o menos)",
+        "variations": [
+            2224,
+            1939,
+            2483,
+            2439,
+            2167
+        ]
+    },
+    {
+        "key":"ph3",
+        "word": " F1 de /e/ (head map de 300 a 700 Hz más o menos)",
+        "variations": [
+            352,
+            644,
+            595,
+            609,
+            542
+        ]
+    },
+    {
+        "key":"ph4",
+        "word": " F2 de /e/ (heat map de 1700 a 2400 Hz más o menos)",
+        "variations": [
+            1724,
+            1985,
+            2056,
+            2092,
+            2241
+        ]
+    },
+    {
+        "key":"ph5",
+        "word": " F1 de /a/ (heat map de 500 a 1000 Hz más o menos)",
+        "variations": [
+            955,
+            701,
+            717,
+            885,
+            758
+        ]
+    },
+    {
+        "key":"ph6",
+        "word": " F2 de /a/ (heat map de 1000 a 200 Hz más o menos)",
+        "variations": [
+            1232,
+            1367,
+            1453,
+            1465,
+            1379
+        ]
+    },
+    {
+        "key":"ph7",
+        "word": " F1 de /o/(heat map de 300 a 700 Hz más o menos)",
+        "variations": [
+            398,
+            333,
+            673,
+            568,
+            655
+        ]
+    },
+    {
+        "key":"ph8",
+        "word": " F2 de /o/ (heat map de 700 a 1000 hz más o menos)",
+        "variations": [
+            741,
+            962,
+            814,
+            863,
+            716
+        ]
+    },
+    {
+        "key":"ph9",
+        "word": " F1 de /u/(heat map de 200 a 500 Hz más o menos)",
+        "variations": [
+            349,
+            290,
+            387,
+            261,
+            393
+        ]
+    },
+    {
+        "key":"ph10",
+        "word": " F2 de /u/ (heat map de 400 a 800 hz más o menos)",
+        "variations": [
+            580,
+            496,
+            745,
+            583,
+            587
+        ]
+    },
+    {
+        "key":"ph11",
+        "word": " Consonante: /p-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph12",
+        "word": " Consonante: /b-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph13",
+        "word": " Consonante: /m-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph14",
+        "word": " Consonante: /f-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph15",
+        "word": " Consonante: /θ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph16",
+        "word": " Consonante: /t-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph17",
+        "word": " Consonante: /d-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph18",
+        "word": " Consonante: /n-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph19",
+        "word": " Consonante: /r-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph20",
+        "word": " Consonante: /s-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph21",
+        "word": " Consonante: /l-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph22",
+        "word": " Consonante: /tʃ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph23",
+        "word": " Consonante: /ɲ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph24",
+        "word": " Consonante: /ʝ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph25",
+        "word": " Consonante: /ʎ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph26",
+        "word": " Consonante: /k-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph27",
+        "word": " Consonante: /ɡ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph28",
+        "word": " Consonante: /x-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph29",
+        "word": " Consonante: /-p-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph30",
+        "word": " Consonante: /-b-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph31",
+        "word": " Consonante: /-m-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph32",
+        "word": " Consonante: /-f-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph33",
+        "word": " Consonante: /-θ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph34",
+        "word": " Consonante: /-t-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph35",
+        "word": " Consonante: /-d-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph36",
+        "word": " Consonante: /-n-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph37",
+        "word": " Consonante: /-ɾ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph38",
+        "word": " Consonante: /-r-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph39",
+        "word": " Consonante: /-s-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph40",
+        "word": " Consonante: /-l-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph41",
+        "word": " Consonante: /-tʃ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph42",
+        "word": " Consonante: /-ɲ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph43",
+        "word": " Consonante: /-ʝ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph44",
+        "word": " Consonante: /-ʎ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph45",
+        "word": " Consonante: /-k-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph46",
+        "word": " Consonante: /-ɡ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph47",
+        "word": " Consonante: /-x-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph48",
+        "word": " Área de la oposición de la abertura vocálica ante /-s/ (break down by vowel if necessary)",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph49",
+        "word": " Palatal, palatalizada (o velarizada) /a/ átona en /-as/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph50",
+        "word": " Vocal ante /-s/: /i/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph51",
+        "word": " Vocal ante /-r/: /i/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph52",
+        "word": " Vocal ante /-θ/: /i/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph53",
+        "word": " Vocal ante /-n/: /i/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph54",
+        "word": " Vocal ante /-l/: /i/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph55",
+        "word": " Vocal ante /-s/: /e/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph56",
+        "word": " Vocal ante /-r/: /e/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph57",
+        "word": " Vocal ante /-θ/: /e/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph58",
+        "word": " Vocal ante /-n/: /e/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph59",
+        "word": " Vocal ante /-l/: /e/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph60",
+        "word": " Vocal ante /-s/: /a/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph61",
+        "word": " Vocal ante /-r/: /a/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph62",
+        "word": " Vocal ante /-θ/: /a/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph63",
+        "word": " Vocal ante /-n/: /a/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph64",
+        "word": " Vocal ante /-l/: /a/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph65",
+        "word": " Vocal ante /-s/: /o/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph66",
+        "word": " Vocal ante /-r/: /o/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph67",
+        "word": " Vocal ante /-θ/: /o/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph68",
+        "word": " Vocal ante /-n/: /o/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph69",
+        "word": " Vocal ante /-l/: /o/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph70",
+        "word": " Vocal ante /-s/: /u/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph71",
+        "word": " Vocal ante /-r/: /u/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph72",
+        "word": " Vocal ante /-θ/: /u/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph73",
+        "word": " Vocal ante /-n/: /u/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph74",
+        "word": " Vocal ante /-l/: /u/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph75",
+        "word": " La Andalucía de la /e/ (/a/ tónica ante /-s/, /-r/, /-l/, /-θ/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph76",
+        "word": " Tipos de: /ʝ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph77",
+        "word": " Tipos de: /-ʝ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph78",
+        "word": " Tipos de: /ʎ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph79",
+        "word": " Tipos de: /-ʎ-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph80",
+        "word": " Distinción, seseo, ceceo",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph81",
+        "word": " Tipos de: /s/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph82",
+        "word": " Tipos de: /θ/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph83",
+        "word": " /-s/ ante vocal",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph84",
+        "word": " Tipos de: /tʃ/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph85",
+        "word": " Tipos de: /l/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph86",
+        "word": " Aspiración: /p/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph87",
+        "word": " Aspiración: /t/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph88",
+        "word": " Aspiración: /k/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph89",
+        "word": " F inicial latina",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph90",
+        "word": " Tipos de: /x/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph91",
+        "word": " Mantenimiento de codas",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph92",
+        "word": " Oposición: /r/ /l/ en coda interior",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph93",
+        "word": " Oposición: /ʝ/ /ʎ/ en posición inicial",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph94",
+        "word": " Oposición: /ʝ/ /ʎ/ en posición interior",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph95",
+        "word": " Oposición: /s/ /θ/ /x/ en posición interior",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph96",
+        "word": " Tipos de: /l/ en coda interior",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph97",
+        "word": " Tipos de: /r/ en coda interior",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph98",
+        "word": " Tipos de: /l/ en coda final",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph99",
+        "word": " Tipos de: /r/ en coda final",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph100",
+        "word": " Pronunciación del grupo: /sb/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph101",
+        "word": " Pronunciación del grupo: /sd/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph102",
+        "word": " Pronunciación del grupo: /sg/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph103",
+        "word": " Pronunciación del grupo: /s+ʝ/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph104",
+        "word": " Pronunciación del grupo: /s+ʎ/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph105",
+        "word": " Pronunciación del grupo: /s/ + /je-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph106",
+        "word": " Pronunciación del grupo: /n+x/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph107",
+        "word": " Vosotros vs ustedes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph108",
+        "word": " Distinción: /ɾ/ /r/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph109",
+        "word": " Heheo",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph110",
+        "word": " Preaspiración: /sOclusivaSorda/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph111",
+        "word": " Postaspiración: /sOclusivaSorda/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph112",
+        "word": " Geminación: [hCːh], [hCː] [Cːh] [Cː]",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph113",
+        "word": " Geminación: ratio simple vs geminada (ej. geminada/simple < 1,2; 1,2 - 1,5; > 1,5)",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph114",
+        "word": " Marcador de pluralidad en geminación (ej. abertura vocálica, duración, etc.)",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph115",
+        "word": " Armonía vocálica: sí, no, en algunas vocales solo",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph116",
+        "word": " Armonía vocálica: extensión y bloqueo (distintas consonantes)",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph117",
+        "word": " Armonía vocálica: /iCis/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph118",
+        "word": " Armonía vocálica: /iCVs/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph119",
+        "word": " Armonía vocálica: /eCes/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph120",
+        "word": " Armonía vocálica: /eCVs/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph121",
+        "word": " Armonía vocálica: /aCas/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph122",
+        "word": " Armonía vocálica: /aCVs/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph123",
+        "word": " Armonía vocálica: /oCos/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph124",
+        "word": " Armonía vocálica: /oCVs/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph125",
+        "word": " Armonía vocálica: /uCus/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph126",
+        "word": " Armonía vocálica: /uCVs/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph127",
+        "word": " Armonía vocálica: recámara vs recámaras",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph128",
+        "word": " Armonía vocálica: nuca vs nucas vs azúcar",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph129",
+        "word": " Armonía vocálica: ceta vs cetas",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph130",
+        "word": " Armonía vocálica: cesta vs cestas",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph131",
+        "word": " Armonía vocálica: Capi vs lápiz",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph132",
+        "word": " Armonía vocálica: gasta vs gastas",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph133",
+        "word": " Armonía vocálica: Fernándo vs Fernández",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph134",
+        "word": " Tipos de: /n/ (/-nC-)",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph135",
+        "word": " Tipos de: /n/ (/-n/)",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph136",
+        "word": " Diptongo: /ej/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph137",
+        "word": " Diptongo: /je-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph138",
+        "word": " Diptongo: /we-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph139",
+        "word": " Diptongo: /ju-/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph140",
+        "word": " Diptongo: /-ejs/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph141",
+        "word": " Diptongo: /oj/",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph142",
+        "word": " Nasalización de vocales ante /-n/ subyacente",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph143",
+        "word": " Sonorización de sordas en posición intervocálica",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph144",
+        "word": " Ensordecimiento de sonoras en posición intervocálica",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph145",
+        "word": " Coarticulación subyacente: /is/ en ceceantes vs distinguidores/seseantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph146",
+        "word": " Coarticulación subyacente: /iθ/ en seseantes vs distinguidores/ceceantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph147",
+        "word": " Coarticulación subyacente: /es/ en ceceantes vs distinguidores/seseantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph148",
+        "word": " Coarticulación subyacente: /eθ/ en seseantes vs distinguidores/ceceantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph149",
+        "word": " Coarticulación subyacente: /as/ en ceceantes vs distinguidores/seseantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph150",
+        "word": " Coarticulación subyacente: /aθ/ en seseantes vs distinguidores/ceceantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph151",
+        "word": " Coarticulación subyacente: /os/ en ceceantes vs distinguidores/seseantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph152",
+        "word": " Coarticulación subyacente: /oθ/ en seseantes vs distinguidores/ceceantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph153",
+        "word": " Coarticulación subyacente: /us/ en ceceantes vs distinguidores/seseantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    },
+    {
+        "key":"ph154",
+        "word": " Coarticulación subyacente: /uθ/ en seseantes vs distinguidores/ceceantes",
+        "variations": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+        ]
+    }
+]

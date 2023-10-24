@@ -5,10 +5,19 @@ import 'react-h5-audio-player/lib/styles.css';
 //https://www.npmjs.com/package/react-h5-audio-player
 
 
-const CodeDetails = ({place}) => {
+const CodeDetails = ({place, selected, refProp}) => {
+
+  let backgroundcolorSelected = '#8f8c74';
+  let backgroundcolorStandar = '#fafafa';
+  if(selected){
+    console.log(place);
+    console.log(refProp); 
+    refProp?.current?.scrollIntoView({behavior: "smooth", block:"start"})
+  } 
+
   return(
     <Card elevation={2}>
-      <CardContent>
+      <CardContent sx={{backgroundColor: selected? backgroundcolorSelected: backgroundcolorStandar}}>
         <Typography gutterBottom variant="h5">{place.lugar}</Typography>
         <Box display="flex" justifyContent={"space-between"}>
           <Typography variant="subtitle1">Código postal: </Typography>
