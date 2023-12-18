@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.leaflet-container{
+    font-family: Rokkitt,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+}
+
 .leaflet_tooltip{
     background-color: rgba(158, 182, 224, 0);
     color:black;
@@ -16,4 +20,12 @@
 .leaflet_tooltip::before{
     border-left-color: transparent;
     border-right-color: transparent;
+}
+
+.legend{
+    background-color: transparent;
+    width: 250px;
+    font-family: Rokkitt;
+    text-align: center;
+
 }

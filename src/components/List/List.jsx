@@ -4,12 +4,12 @@ import CodeDetails from "../CodeDetails/CodeDetails";
 
 import 'react-h5-audio-player/lib/styles.css';
 
-const List = ({places, word, childClicked}) => {  
+const List = ({places, word, postalCodeClicked}) => {  
 
   const [elRefs, setElRefs] = useState([]);
   
   console.log("============");
-  console.log(childClicked);
+  console.log(postalCodeClicked);
   console.log("============");
 
   useEffect(()=>{
@@ -23,7 +23,7 @@ const List = ({places, word, childClicked}) => {
         <Grid container spacing={3} sx={{height: '85vh', overflow: 'auto', marginTop:'10px'}}>
           {places?.map((place, i) => (
             <Grid ref={elRefs[i]} item key={i} xs={12}>
-              <CodeDetails place={place.properties} selected={childClicked?.feature.properties.name === place.properties.name} refProp={elRefs[i]}/>
+              <CodeDetails place={place.properties} selected={postalCodeClicked?.feature.properties.name === place.properties.name} refProp={elRefs[i]}/>
             </Grid>
           ))}
         </Grid>

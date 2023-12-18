@@ -26,6 +26,10 @@ const CodeDetails = ({place, selected, refProp}) => {
           <AudioPlayer src="/atlas-anda/Probando.mp3" onPlay={e => console.log("onPlay")}
           />  
         </Box>
+        <br />
+        <Typography variant="body2" display="block" gutterBottom>
+         This is a description of the word.
+        </Typography>
       </CardContent>
     </Card>
   )

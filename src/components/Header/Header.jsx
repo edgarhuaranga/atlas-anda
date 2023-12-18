@@ -1,6 +1,10 @@
   import React from "react";
-  import { AppBar,Toolbar, Typography, Box } from "@mui/material"; 
-  import InfoIcon from '@mui/icons-material/Info';
+  import { Link } from "react-router-dom";
+
+  import { AppBar,Toolbar, Typography, Box, IconButton } from "@mui/material"; 
+
+  import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+
 
   const Header = () => {
     
@@ -11,7 +15,10 @@
                 Atlas Lingüístico Interactivo de los Acentos de Andalucía
                 </Typography>
                 <Box sx={{display:'flex', flexDirection:'row'}}>
-                    <InfoIcon/>
+                    
+                    <Link to="/" sx={{color:'white'}}>
+                        <HomeOutlinedIcon sx={{color:'white'}}/>
+                    </Link>
                 </Box>
             </Toolbar>
         </AppBar>

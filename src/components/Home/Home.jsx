@@ -4,13 +4,17 @@ import Header from "../Header/Header";
 import Searcher from "../Searcher/Searcher";
 import words from '../Map/words.json'
 import phenomenoms from '../../files/phenomenoms.json'
-
+import Hero from '../Hero/Hero';
 
 const Home = () => {
     
     const searchableWords = words.map((value, key)=>{
         return value.word;
     });
+
+    console.log("+++++++++++++");
+    searchableWords.sort();
+    
 
     const searchablePhenomns = phenomenoms.map((value, key) => {
         return {"k": value.key, "w":value.word};
@@ -41,9 +45,8 @@ const Home = () => {
     
     return(
         <>
-        <CssBaseline />
-        <Header />
-        
+        <CssBaseline enableColorScheme/>
+        <Hero/>
         <Grid container fixed mt={2} spacing={3}>
             <Grid container row xs={12}>
                 <Grid xs={12} pl={6} sm={6} md={6} mb={3}>
@@ -54,10 +57,7 @@ const Home = () => {
                                 requestSearch(event.target.value);
                               }}
                             label="Búsqueda de palabra" variant="standard">
-                            
                     </TextField>
-                    
-                    
                 </Grid>
                 <Grid xs={12} sm={6} md={6} pl={6}>
                     <FormControl xs={6}>

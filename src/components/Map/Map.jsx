@@ -3,7 +3,7 @@ import { Paper, Typography, useMediaQuery } from "@mui/material";
 import "leaflet/dist/leaflet.css";
 import { LocationOnOutlined } from "@mui/icons-material";  
 import { GeoJSON, MapContainer, TileLayer, Tooltip, useMap, useMapEvents, Marker, Popup, Pane } from 'react-leaflet'
-import andalucia from './andalucia.json'
+import andalucia from '../../data/andalucia.json'
 import spania from '../../files/basemap.json'
 import words from './words.json'
 import * as turf from '@turf/turf'
@@ -32,7 +32,7 @@ function MyComponent() {
 }
 
 
-const Map = ({polygons, data, word, setChildClicked}) => {
+const Map = ({polygons, data, word, setPostalCodeClicked}) => {
 
   const result = words.filter((w) => w.word === word)[0];
   console.log(result);
@@ -73,7 +73,7 @@ const Map = ({polygons, data, word, setChildClicked}) => {
               const districtName = event.target.feature.properties.comunidad
               console.log(districtName);
               console.log(layer.feature);
-              setChildClicked(layer);
+              setPostalCodeClicked(layer);
             }
           })
 
