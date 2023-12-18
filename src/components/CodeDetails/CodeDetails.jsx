@@ -9,8 +9,6 @@ const CodeDetails = ({place, selected, refProp}) => {
   let backgroundcolorSelected = '#8f8c74';
   let backgroundcolorStandar = '#fafafa';
   if(selected){
-    console.log(place);
-    console.log(refProp); 
     refProp?.current?.scrollIntoView({behavior: "smooth", block:"start"})
   } 
 

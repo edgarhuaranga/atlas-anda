@@ -1,11 +1,14 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ReactDOMServer from 'react-dom/server';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import "leaflet/dist/leaflet.css";
 import { GeoJSON, MapContainer, Tooltip, useMapEvents, Marker, TileLayer } from 'react-leaflet'
-import andalucia from '../../data/andalucia.json'
-import {Box, Typography, Card, CardContent} from "@mui/material"; 
+import andalucia from '../../data/postal_codes.json'
+import { Box, Typography, Card, CardContent } from "@mui/material";
 import spania from '../../files/basemap.json'
 import words from './words.json'
+import phenomenos from '../../files/phenomenoms.json'
 import * as turf from '@turf/turf'
 import L from "leaflet";
 import styles from "./styles.module.css";
@@ -21,17 +24,17 @@ const svgIcon = L.divIcon({
 });
 
 function Leyenda(titulo) {
-    return(
-        <Card elevation={2}>
-            <CardContent>
-                <Typography variant="h1">{titulo}</Typography>
-            </CardContent>
-        </Card>        
-    )
+  return (
+    <Card elevation={2}>
+      <CardContent>
+        <Typography variant="h1">{titulo}</Typography>
+      </CardContent>
+    </Card>
+  )
 }
 
-function MyComponent({word}) {
-
+function MyComponent() {
+  let { word } = useParams();
   const map = useMapEvents({
     click: () => {
       //console.log('map center:', map.getCenter())
@@ -41,96 +44,121 @@ function MyComponent({word}) {
     type: 'FeatureCollection',
     features: spania.features
   });
-  map.setMaxBounds([[bbox[1], bbox[0]],[bbox[3], bbox[2]]])
+  map.setMaxBounds([[bbox[1], bbox[0]], [bbox[3], bbox[2]]])
 
-    var legend = L.control({position: 'topright'});
-    try{
-        var legends = document.getElementsByClassName(styles.legend);
-        console.log("aqui estamos")
-        console.log(legends);
-        if(legends.length == 0){
-            console.log("aqui estamos 2")
-            legend.onAdd = function (map) {
-                var div = L.DomUtil.create('div', styles.legend);
-                console.log(word.word)
-                div.innerHTML = ReactDOMServer.renderToString(Leyenda(word.word));
-                return div;
-            };
-            legend.addTo(map);    
-        }
-    } catch(error){
-        console.log(error)
+  var legend = L.control({ position: 'topright' });
+  try {
+    var legends = document.getElementsByClassName(styles.legend);
+    if (legends.length == 0) {
+      legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', styles.legend);
+        div.innerHTML = ReactDOMServer.renderToString(Leyenda(word));
+        return div;
+      };
+      legend.addTo(map);
     }
-    
+  } catch (error) {
+    console.log(error)
+  }
 
-    
-    return null
+
+
+  return null
 }
 
 
-const Map = ({polygons, data, word, setPostalCodeClicked}) => {
-  const [mapa, setMapa] = useState(null);
-  const result = words.filter((w) => w.word === word)[0];
-  console.log(result);
-  console.log("=========")
-  console.log(mapa)
+const Map = ({ polygons, data, setPostalCodeClicked }) => {
 
-  return(
+  const colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd']
+  let { word } = useParams();
+  let { mapstyle } = useParams();
+  let result = words.filter((w) => w.word === word)[0];
+  if (mapstyle == "palabra") {
+    var secondLayer = 
     <>
-    <MapContainer id={'map'} center={[37.96721, -4.92092]} minZoom={7} maxZoom={15} zoom={8} whenCreated={setMapa} scrollWheelZoom={true} sx={{border:'5px blue solid'}} style={ {width:'100%', height:'85vh', marginTop:'10px'}}>
-      <TileLayer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" />
-      {/* <TileLayer url="http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png" />
-      <TileLayer url="http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png" /> */}
-      <GeoJSON 
-       onEachFeature={(feature, layer) => {
-        layer.options.fillColor = "#EFE9DD"
+    <GeoJSON
+      onEachFeature={(feature, layer) => {
+        layer.options.fillColor = "#006E39"
+        layer.options.color = "black"
+        layer.options.fillOpacity = 0.8
+        layer.options.weight = 1
+        layer.options.dashArray = 1
+        layer.options.opacity = 1
+
+        layer.on({
+          click: (event) => {
+            const districtName = event.target.feature.properties.comunidad
+            console.log(districtName + " - " + layer.feature.properties.lugar);
+            setPostalCodeClicked(layer);
+          }
+        })
+
+
+        let popupContent = result.variations[1]
+        let tooltipOptions = { permanent: true, opacity: 0.75, className: styles.leaflet_tooltip }
+        layer.bindTooltip(popupContent, tooltipOptions);
+
+
+      }}
+      key={1} data={JSON.parse(JSON.stringify(andalucia))} style={{ weight: 1 }} />
+      
+      {polygons?.map((feature, i) => {
+          return <Marker key={i} icon={svgIcon} position={[turf.center(feature.geometry).geometry.coordinates[1], turf.center(feature.geometry).geometry.coordinates[0]]}>
+          </Marker>
+        }
+        )}
+    </>
+    
+  }
+
+  else if (mapstyle == "fenomeno") {
+    result = phenomenos.filter((w) => w.key === word)[0];
+    secondLayer = <GeoJSON
+      onEachFeature={(feature, layer) => {
+        layer.options.fillColor = colors[Math.floor(Math.random() * colors.length)]
         layer.options.color = "black"
         layer.options.fillOpacity = 0.5
-        layer.options.weight = 3
+        layer.options.weight = 1
         layer.options.dashArray = 1
-        layer.options.opacity = 0.9
-      
-        }} key={2} data={JSON.parse(JSON.stringify(spania))}/> 
+        layer.options.opacity = 1
 
-      <GeoJSON 
-        onEachFeature={(feature, layer) => {
-          layer.options.fillColor = "#006E39"
-          layer.options.color = "black"
-          layer.options.fillOpacity = 0.5
-          layer.options.weight = 1
-          layer.options.dashArray = 1
-          layer.options.opacity = 1
-          
-          layer.on({
-            click: (event) => {
-              const districtName = event.target.feature.properties.comunidad
-              console.log(districtName);
-              console.log(layer.feature);
-              setPostalCodeClicked(layer);
-            }
-          })
-
-          let popupContent = result.variations[1]
-
-          let tooltipOptions = {
-            permanent: true,
-            opacity: 0.75,
-            className: styles.leaflet_tooltip
+        layer.on({
+          click: (event) => {
+            const districtName = event.target.feature.properties.comunidad
+            console.log(districtName + " - " + layer.feature.properties.lugar);
+            setPostalCodeClicked(layer);
           }
+        })
 
-          layer.bindTooltip(popupContent, tooltipOptions);
+      }}
+      key={1} data={JSON.parse(JSON.stringify(andalucia))} style={{ weight: 1 }} />
+      
+  }
 
-        }}
-        key={1} data={JSON.parse(JSON.stringify(andalucia))} style={{weight:1}}/>
 
 
-      {/* {polygons?.map((feature, i) => {  
-          return  <Marker key={i} icon={svgIcon} position={[turf.center(feature.geometry).geometry.coordinates[1] , turf.center(feature.geometry).geometry.coordinates[0]]}>
-                  </Marker>  
-        } 
-        )} */}
-        <MyComponent word={result}/>
+  return (
+    <>
+      <MapContainer id={'map'} center={[37.96721, -4.92092]} minZoom={7} maxZoom={15} zoom={8} scrollWheelZoom={true} sx={{ border: '5px blue solid' }} style={{ width: '100%', height: '85vh', marginTop: '10px' }}>
+        <TileLayer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" />
+        {/* <TileLayer url="http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png" />
+        <TileLayer url="http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png" /> */}
+        <GeoJSON
+          onEachFeature={(feature, layer) => {
+            layer.options.fillColor = "#EFE9DD"
+            layer.options.color = "black"
+            layer.options.fillOpacity = 0.5
+            layer.options.weight = 3
+            layer.options.dashArray = 1
+            layer.options.opacity = 1
+          }} key={2} data={JSON.parse(JSON.stringify(spania))} />
+
+        {secondLayer}
+
         
+       
+        <MyComponent />
+
       </MapContainer>
     </>
   )

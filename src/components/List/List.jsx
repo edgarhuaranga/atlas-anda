@@ -7,10 +7,6 @@ import 'react-h5-audio-player/lib/styles.css';
 const List = ({places, word, postalCodeClicked}) => {  
 
   const [elRefs, setElRefs] = useState([]);
-  
-  console.log("============");
-  console.log(postalCodeClicked);
-  console.log("============");
 
   useEffect(()=>{
     const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef());

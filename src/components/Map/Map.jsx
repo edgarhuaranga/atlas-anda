@@ -3,7 +3,7 @@ import { Paper, Typography, useMediaQuery } from "@mui/material";
 import "leaflet/dist/leaflet.css";
 import { LocationOnOutlined } from "@mui/icons-material";  
 import { GeoJSON, MapContainer, TileLayer, Tooltip, useMap, useMapEvents, Marker, Popup, Pane } from 'react-leaflet'
-import andalucia from '../../data/andalucia.json'
+import andalucia from '../../data/postal_codes.json'
 import spania from '../../files/basemap.json'
 import words from './words.json'
 import * as turf from '@turf/turf'

@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react";
 import "leaflet/dist/leaflet.css";
 import { GeoJSON, MapContainer, TileLayer, Tooltip, useMap, useMapEvents, Marker, Popup, Pane } from 'react-leaflet'
-import andalucia from '../../data/andalucia.json'
+import andalucia from '../../data/postal_codes.json'
 import phenomenos from '../../files/phenomenoms.json'
 import spania from '../../files/basemap.json'
 import * as turf from '@turf/turf'
