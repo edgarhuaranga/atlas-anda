@@ -26,7 +26,7 @@ const CodeDetails = ({place, selected, refProp}) => {
         </Box>
         <br />
         <Typography variant="body2" display="block" gutterBottom>
-         This is a description of the word.
+         {place.comment}
         </Typography>
       </CardContent>
     </Card>

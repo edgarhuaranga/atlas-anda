@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useParams, } from "react-router
 import { CssBaseline, Grid } from "@mui/material";
 import Header from "./components/Header/Header";
 import List from "./components/List/List";
-import Map from "./components/Map/Map";
-import PhenoMap from './components/PhenoMap/PhenoMap';
 import AtlasMap from './components/AtlasMap/AtlasMap';
 import andalucia from './data/postal_codes.json';
 import Home from './components/Home/Home';
@@ -30,7 +28,7 @@ function WordMap() {
           <AtlasMap polygons={andalucia.features} data={andalucia} setPostalCodeClicked={setPostalCodeClicked}/>
         </Grid>
         <Grid item xs={12} md={4}>
-          <List places={andalucia.features} word={word} postalCodeClicked={postalCodeClicked}/>
+          <List postalCodeClicked={postalCodeClicked}/>
         </Grid>
       </Grid>
 
@@ -38,40 +36,18 @@ function WordMap() {
   );
 }
 
-function FMap(){
-  let { word } = useParams();
-  const [postalCodeClicked, setPostalCodeClicked] = useState(null);
-  
-  return (
-    <>
-      <CssBaseline />
-      <Header />
-      <Grid container spacing={3} style={{ width: '100%' }}>
-        <Grid item xs={12} md={8}>
-          <AtlasMap polygons={andalucia.features} data={andalucia} word={word} setPostalCodeClicked={setPostalCodeClicked}/>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <List places={andalucia.features} word={word} postalCodeClicked={postalCodeClicked}/>
-        </Grid>
-
-      </Grid>
-
-    </>
-  );
-}
 
 const App = () => {
 
-  const finalData = getMultipleRandom(andalucia.features, 250);
-  andalucia.features = finalData;
+  //const finalData = getMultipleRandom(andalucia.features, 300);
+  //andalucia.features = finalData;
 
   return (
     <Router>
       <Routes>
         <Route path="/:mapstyle/:word" element={<WordMap/>} />        
         <Route path="/" element={<Home />} />
-        <Route path="/atlas-anda/palabra/:word" element={<WordMap/>} />
-        <Route path="/atlas-anda/fenomeno/:word" element={<FMap/>} />
+        <Route path="/atlas-anda/:mapstyle/:word" element={<WordMap/>} />
         <Route path="/atlas-anda/" element={<Home/>} />
       </Routes>
     </Router>

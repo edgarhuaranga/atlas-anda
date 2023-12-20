@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { CssBaseline,  Grid, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, TextField} from "@mui/material";
-import Header from "../Header/Header";
 import Searcher from "../Searcher/Searcher";
-import words from '../Map/words.json'
-import phenomenoms from '../../files/phenomenoms.json'
+import words from '../../data/words.json'
+import phenomenoms from '../../data/phenomenoms.json'
 import Hero from '../Hero/Hero';
 
 const Home = () => {
@@ -12,10 +11,8 @@ const Home = () => {
         return value.word;
     });
 
-    console.log("+++++++++++++");
     searchableWords.sort();
     
-
     const searchablePhenomns = phenomenoms.map((value, key) => {
         return {"k": value.key, "w":value.word};
     });

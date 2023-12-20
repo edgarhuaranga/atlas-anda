@@ -7,8 +7,8 @@ import { GeoJSON, MapContainer, Tooltip, useMapEvents, Marker, TileLayer } from 
 import andalucia from '../../data/postal_codes.json'
 import { Box, Typography, Card, CardContent } from "@mui/material";
 import spania from '../../files/basemap.json'
-import words from './words.json'
-import phenomenos from '../../files/phenomenoms.json'
+import words from '../../data/words.json'
+import phenomenos from '../../data/phenomenoms.json'
 import * as turf from '@turf/turf'
 import L from "leaflet";
 import styles from "./styles.module.css";
@@ -22,6 +22,23 @@ const svgIcon = L.divIcon({
   iconSize: [10, 10],
   iconAnchor: [10, 10]
 });
+
+function filterMap(word){
+  let result = words.filter((w) => w.word === word)[0];
+
+  var filteredMap = andalucia.features.filter((feature) => {
+    for(var i=0; i<result.distribution.length; i++){
+      let pc = result.distribution[i].postalcode;
+      if(feature.properties.name === pc){
+        feature.properties["variation"] = result.distribution[i].variation
+        feature.properties["audioURL"] = result.distribution[i].audioURL
+        feature.properties["comment"] = result.distribution[i].comment
+        return feature
+      }
+    }
+  })
+  return filteredMap;
+}
 
 function Leyenda(titulo) {
   return (
@@ -61,10 +78,9 @@ function MyComponent() {
     console.log(error)
   }
 
-
-
   return null
 }
+
 
 
 const Map = ({ polygons, data, setPostalCodeClicked }) => {
@@ -73,6 +89,10 @@ const Map = ({ polygons, data, setPostalCodeClicked }) => {
   let { word } = useParams();
   let { mapstyle } = useParams();
   let result = words.filter((w) => w.word === word)[0];
+
+  const finalData = filterMap(word);
+  andalucia.features = finalData;
+
   if (mapstyle == "palabra") {
     var secondLayer = 
     <>
@@ -94,7 +114,7 @@ const Map = ({ polygons, data, setPostalCodeClicked }) => {
         })
 
 
-        let popupContent = result.variations[1]
+        let popupContent = feature.properties.variation
         let tooltipOptions = { permanent: true, opacity: 0.75, className: styles.leaflet_tooltip }
         layer.bindTooltip(popupContent, tooltipOptions);
 
@@ -102,11 +122,11 @@ const Map = ({ polygons, data, setPostalCodeClicked }) => {
       }}
       key={1} data={JSON.parse(JSON.stringify(andalucia))} style={{ weight: 1 }} />
       
-      {polygons?.map((feature, i) => {
+      {/* {polygons?.map((feature, i) => {
           return <Marker key={i} icon={svgIcon} position={[turf.center(feature.geometry).geometry.coordinates[1], turf.center(feature.geometry).geometry.coordinates[0]]}>
           </Marker>
         }
-        )}
+        )} */}
     </>
     
   }
@@ -135,14 +155,11 @@ const Map = ({ polygons, data, setPostalCodeClicked }) => {
       
   }
 
-
+  filterMap(word);
 
   return (
     <>
       <MapContainer id={'map'} center={[37.96721, -4.92092]} minZoom={7} maxZoom={15} zoom={8} scrollWheelZoom={true} sx={{ border: '5px blue solid' }} style={{ width: '100%', height: '85vh', marginTop: '10px' }}>
-        <TileLayer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" />
-        {/* <TileLayer url="http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png" />
-        <TileLayer url="http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png" /> */}
         <GeoJSON
           onEachFeature={(feature, layer) => {
             layer.options.fillColor = "#EFE9DD"
@@ -154,8 +171,6 @@ const Map = ({ polygons, data, setPostalCodeClicked }) => {
           }} key={2} data={JSON.parse(JSON.stringify(spania))} />
 
         {secondLayer}
-
-        
        
         <MyComponent />
 

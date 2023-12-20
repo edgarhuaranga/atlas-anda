@@ -5,7 +5,7 @@ import { LocationOnOutlined } from "@mui/icons-material";
 import { GeoJSON, MapContainer, TileLayer, Tooltip, useMap, useMapEvents, Marker, Popup, Pane } from 'react-leaflet'
 import andalucia from '../../data/postal_codes.json'
 import spania from '../../files/basemap.json'
-import words from './words.json'
+import words from '../../data/words.json'
 import * as turf from '@turf/turf'
 import L from "leaflet";
 import styles from "./styles.module.css";

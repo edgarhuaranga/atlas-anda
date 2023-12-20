@@ -12,7 +12,67 @@
             "djeθiˈseih",
             "djeθiˈseih",
             "djeθiˈseih"
+        ],
+        "distribution":[
+            {
+                "postalcode": "21639",
+                "variation": "djeθiˈsɛɪ",
+                "audioURL": "/Probando.mp3",
+                "comment": "Aquí pronuncian más la S"
+            },
+            {
+                "postalcode": "04700",
+                "variation": "djeθiˈsɛɪ",
+                "audioURL": "/Probando.mp3",
+                "comment": "Aquí vivo yo"
+            },
+            {
+                "postalcode": "41240",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41560",
+                "variation": "djeθiˈsɛɪ",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "14300",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3"
+            },
+            {
+                "postalcode": "41860",
+                "variation": "palabrota",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41230",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41231",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41232",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            }
         ]
+    },
+    {
+        "word": "Manolo",
+        "variations": [],
+        "distribution":[]
     },
     {
         "word": "sucio",
@@ -27,6 +87,61 @@
             "ˈθuθjo",
             "ˈθuθjo",
             "ˈθuθjo"
+        ],
+        "distribution":[
+            {
+                "postalcode": "21639",
+                "variation": "djeθiˈsɛɪ",
+                "audioURL": "/Probando.mp3",
+                "comment": "Aquí pronuncian más la S"
+            },
+            {
+                "postalcode": "04700",
+                "variation": "djeθiˈsɛɪ",
+                "audioURL": "/Probando.mp3",
+                "comment": "Aquí vivo yo"
+            },
+            {
+                "postalcode": "41240",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41560",
+                "variation": "djeθiˈsɛɪ",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "14300",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3"
+            },
+            {
+                "postalcode": "41860",
+                "variation": "palabrota",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41230",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41231",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41232",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            }
         ]
     },
     {
@@ -1677,36 +1792,6 @@
             "beˈloh",
             "beˈlɔ",
             "beˈlɔ"
-        ]
-    },
-    {
-        "word": "Singapur",
-        "variations": [
-            "siŋɡaˈpʊ",
-            "siŋɡaˈpʊ",
-            "siŋɡaˈpʊ",
-            "siŋɡaˈpʊ",
-            "siŋɡaˈpʊ",
-            "siŋɡaˈpuh",
-            "siŋɡaˈpʊ",
-            "siŋɡaˈpʊ",
-            "siŋɡaˈpuh",
-            "siŋɡaˈpʊ"
-        ]
-    },
-    {
-        "word": "Chapuz",
-        "variations": [
-            "tʃaˈpʊ",
-            "tʃaˈpʊ",
-            "tʃaˈpʊ",
-            "tʃaˈpʊ",
-            "tʃaˈpuh",
-            "tʃaˈpʊ",
-            "ʃaˈpʊ",
-            "tʃaˈpʊ",
-            "ʃaˈpʊ",
-            "tʃaˈpʊ"
         ]
     },
     {
