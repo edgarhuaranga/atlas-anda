@@ -25,14 +25,12 @@ const Home = () => {
         const filteredItems = searchableWords.filter((item) => { 
             return item.toLowerCase().includes(searchedVal.toLowerCase());
         });
-        
         const filteredPhenoms = searchablePhenomns.filter((item) => { 
             return item.w.toLowerCase().includes(searchedVal.toLowerCase()); 
         });
         
         setItems(filteredItems);
         setPhenoms(filteredPhenoms);
-        console.log(phenoms);
     };
 
     const handleChange = (event) => {
@@ -50,7 +48,6 @@ const Home = () => {
                     <TextField
                             fullWidth
                             onChange={(event) => {
-                                console.log(event.target.value);
                                 requestSearch(event.target.value);
                               }}
                             label="Búsqueda de palabra" variant="standard">

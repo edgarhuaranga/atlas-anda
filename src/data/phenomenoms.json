@@ -8,7 +8,88 @@
             374,
             493,
             220
-        ]
+        ],
+        "heatmap": true,
+        "distribution": [
+            {
+                "postalcode": "21639",
+                "variation": "djeθiˈsɛɪ",
+                "frequency": 312,
+                "audioURL": "/Probando.mp3",
+                "comment": "Los hombres no lo hacen"
+            },
+            {
+                "postalcode": "04700",
+                "variation": "djeθiˈsɛɪ",
+                "audioURL": "/Probando.mp3",
+                "frequency": 312,
+                "comment": "Aquí vivo yo"
+            },
+            {
+                "postalcode": "41240",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "frequency": 312,
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41560",
+                "variation": "djeθiˈsɛɪ",
+                "audioURL": "/Probando.mp3",
+                "frequency": 312,
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "14300",
+                "variation": "djeθiˈseih",
+                "frequency": 312,
+                "audioURL": "/Probando.mp3"
+            },
+            {
+                "postalcode": "41860",
+                "variation": "palabrota",
+                "audioURL": "/Probando.mp3",
+                "frequency": 312,
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41230",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "frequency": 312,
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41231",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41232",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "41233",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "14649",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "14650",
+                "variation": "djeθiˈseih",
+                "audioURL": "/Probando.mp3",
+                "comment": "este es un comentarios"
+            }
+        ] 
     },
     {
         "key":"ph2",

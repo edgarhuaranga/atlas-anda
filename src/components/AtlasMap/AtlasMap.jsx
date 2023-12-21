@@ -23,8 +23,14 @@ const svgIcon = L.divIcon({
   iconAnchor: [10, 10]
 });
 
-function filterMap(word){
+function filterMap(word, mapstyle){
+  
   let result = words.filter((w) => w.word === word)[0];
+  if(mapstyle === "fenomeno"){
+    result = phenomenos.filter((w) => w.key === word)[0];
+  }
+  console.log(result) 
+  console.log(result['distribution']);
 
   var filteredMap = andalucia.features.filter((feature) => {
     for(var i=0; i<result.distribution.length; i++){
@@ -33,10 +39,12 @@ function filterMap(word){
         feature.properties["variation"] = result.distribution[i].variation
         feature.properties["audioURL"] = result.distribution[i].audioURL
         feature.properties["comment"] = result.distribution[i].comment
+        feature.properties["frequency"] = result.distribution[i].frequency
         return feature
       }
     }
   })
+  console.log(filteredMap);
   return filteredMap;
 }
 
@@ -88,12 +96,11 @@ const Map = ({ polygons, data, setPostalCodeClicked }) => {
   const colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd']
   let { word } = useParams();
   let { mapstyle } = useParams();
-  let result = words.filter((w) => w.word === word)[0];
 
-  const finalData = filterMap(word);
+  const finalData = filterMap(word, mapstyle);
   andalucia.features = finalData;
-
-  if (mapstyle == "palabra") {
+  
+  if (mapstyle === "palabra") {
     var secondLayer = 
     <>
     <GeoJSON
@@ -122,17 +129,11 @@ const Map = ({ polygons, data, setPostalCodeClicked }) => {
       }}
       key={1} data={JSON.parse(JSON.stringify(andalucia))} style={{ weight: 1 }} />
       
-      {/* {polygons?.map((feature, i) => {
-          return <Marker key={i} icon={svgIcon} position={[turf.center(feature.geometry).geometry.coordinates[1], turf.center(feature.geometry).geometry.coordinates[0]]}>
-          </Marker>
-        }
-        )} */}
     </>
-    
   }
 
-  else if (mapstyle == "fenomeno") {
-    result = phenomenos.filter((w) => w.key === word)[0];
+  else if (mapstyle === "fenomeno") {
+    
     secondLayer = <GeoJSON
       onEachFeature={(feature, layer) => {
         layer.options.fillColor = colors[Math.floor(Math.random() * colors.length)]
@@ -155,7 +156,6 @@ const Map = ({ polygons, data, setPostalCodeClicked }) => {
       
   }
 
-  filterMap(word);
 
   return (
     <>

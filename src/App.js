@@ -28,7 +28,7 @@ function WordMap() {
           <AtlasMap polygons={andalucia.features} data={andalucia} setPostalCodeClicked={setPostalCodeClicked}/>
         </Grid>
         <Grid item xs={12} md={4}>
-          <List postalCodeClicked={postalCodeClicked}/>
+          {<List postalCodeClicked={postalCodeClicked}/>}
         </Grid>
       </Grid>
 

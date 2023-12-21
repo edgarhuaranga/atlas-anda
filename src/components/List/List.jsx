@@ -5,9 +5,15 @@ import { useParams } from 'react-router-dom';
 import 'react-h5-audio-player/lib/styles.css';
 import andalucia from '../../data/postal_codes.json'
 import words from '../../data/words.json'
+import phenomenos from '../../data/phenomenoms.json'
 
-function filterMap(word){
+function filterMap(word, mapstyle){
+  
   let result = words.filter((w) => w.word === word)[0];
+  if(mapstyle === "fenomeno"){
+    result = phenomenos.filter((w) => w.key === word)[0];
+  }
+
   var filteredMap = andalucia.features.filter((feature) => {
     for(var i=0; i<result.distribution.length; i++){
       let pc = result.distribution[i].postalcode;
@@ -15,10 +21,12 @@ function filterMap(word){
         feature.properties["variation"] = result.distribution[i].variation
         feature.properties["audioURL"] = result.distribution[i].audioURL
         feature.properties["comment"] = result.distribution[i].comment
+        feature.properties["frequency"] = result.distribution[i].frequency
         return feature
       }
     }
   })
+  console.log(filteredMap);
   return filteredMap;
 }
 
@@ -27,14 +35,14 @@ const List = ( {postalCodeClicked}) => {
   let { word } = useParams();
   let { mapstyle } = useParams();
   const [elRefs, setElRefs] = useState([]);
-
-  andalucia.features = filterMap(word);
+  andalucia.features = filterMap(word, mapstyle);
+  
   const places = andalucia.features;
 
   useEffect(()=>{
     const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef());
     setElRefs(refs);
-  }, [places])
+  }, [])
 
 
   return(
