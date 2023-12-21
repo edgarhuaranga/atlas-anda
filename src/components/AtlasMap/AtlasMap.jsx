@@ -68,12 +68,12 @@ function Leyenda(titulo, mapstyle) {
   var table = <></>
 
   if (mapstyle === "fenomeno") {
-    table = <table>
+    table = <table style={{fontSize:18, margin:5}}>
       {
         unique?.map((item, key) => {
           return (
-            <tr key={key}>
-              <td style={{ backgroundColor: item.color }}>&nbsp;</td>
+            <tr key={key} style={{height:20}}>
+              <td style={{ backgroundColor: item.color, width:29, borderRadius:14 }}>&nbsp;</td>
               <td>{item.label}</td>
             </tr>
           )
@@ -90,7 +90,7 @@ function Leyenda(titulo, mapstyle) {
   return (
     <Card elevation={2}>
       <CardContent>
-        <Typography variant="h1">{titulo}</Typography>
+        <Typography variant="h1" sx={{mb:0}}>{titulo}</Typography>
         {table}
       </CardContent>
     </Card>

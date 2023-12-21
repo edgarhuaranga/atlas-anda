@@ -208,7 +208,7 @@
                 "color": "#00ffff"
             },
             {
-                "type": "c4",
+                "type": "sesseo",
                 "color": "#d62728"
             },
             {
@@ -240,7 +240,7 @@
                 "variation": "djeθiˈseih",
                 "audioURL": "/Probando.mp3",
                 "category": "ceceo",
-                "comment": "este es un comentarios"
+                "comment": "esse es un comentarios"
             },
             {
                 "postalcode": "41560",
@@ -252,14 +252,14 @@
             {
                 "postalcode": "14300",
                 "variation": "djeθiˈseih",
-                "category": "c4",
+                "category": "sesseo",
                 "audioURL": "/Probando.mp3"
             },
             {
                 "postalcode": "41860",
                 "variation": "palabrota",
                 "audioURL": "/Probando.mp3",
-                "category": "c5",
+                "category": "sesseo",
                 "comment": "este es un comentarios"
             },
             {
