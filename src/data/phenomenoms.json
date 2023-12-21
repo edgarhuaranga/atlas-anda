@@ -192,7 +192,7 @@
     },
     {
         "key": "ph11",
-        "word": " Consonante: /p-/",
+        "word": "Consonante: /p-/",
         "heatmap": false,
         "variations": [
             {
@@ -205,11 +205,11 @@
             },
             {
                 "type": "c3",
-                "color": "#00ffff"
+                "color": "#00ff00"
             },
             {
-                "type": "sesseo",
-                "color": "#d62728"
+                "type": "sesseosesseo",
+                "color": "#ff0000"
             },
             {
                 "type": "c5",
@@ -223,51 +223,56 @@
         "distribution": [
             {
                 "postalcode": "21639",
-                "variation": "djeθiˈsɛɪ",
                 "category": "ceceo",
                 "audioURL": "/Probando.mp3",
                 "comment": "Los hombres no lo hacen"
             },
             {
                 "postalcode": "04700",
-                "variation": "djeθiˈsɛɪ",
                 "audioURL": "/Probando.mp3",
                 "category": "ceceo",
                 "comment": "Aquí vivo yo"
             },
             {
                 "postalcode": "41240",
-                "variation": "djeθiˈseih",
                 "audioURL": "/Probando.mp3",
                 "category": "ceceo",
                 "comment": "esse es un comentarios"
             },
             {
                 "postalcode": "41560",
-                "variation": "djeθiˈsɛɪ",
                 "audioURL": "/Probando.mp3",
                 "category": "c3",
                 "comment": "este es un comentarios"
             },
             {
                 "postalcode": "14300",
-                "variation": "djeθiˈseih",
-                "category": "sesseo",
+                "category": "sesseosesseo",
                 "audioURL": "/Probando.mp3"
             },
             {
                 "postalcode": "41860",
-                "variation": "palabrota",
                 "audioURL": "/Probando.mp3",
-                "category": "sesseo",
+                "category": "sesseosesseo",
                 "comment": "este es un comentarios"
             },
             {
                 "postalcode": "41230",
-                "variation": "djeθiˈseih",
                 "audioURL": "/Probando.mp3",
                 "category": "c6",
                 "comment": "este es un comentarios"
+            },
+            {
+                "postalcode": "23780",
+                "audioURL": "/Probando.mp3",
+                "category": "c1",
+                "comment": "este es un c1 en El Ejido"
+            },
+            {
+                "postalcode": "04770",
+                "audioURL": "/Probando.mp3",
+                "category": "c1",
+                "comment": "este es un c1 en El Ejido"
             }
         ]
     },

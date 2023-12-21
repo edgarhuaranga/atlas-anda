@@ -100,6 +100,17 @@ function Leyenda(titulo, mapstyle) {
 function MyComponent() {
   let { word } = useParams();
   let {mapstyle} = useParams();
+
+  let result = words.filter((w) => w.word === word)[0];
+  
+  if (mapstyle === "fenomeno") {
+    result = phenomenos.filter((w) => w.key === word)[0];
+  }
+
+  var tituloLeyenda = result.word;
+  
+  
+
   const map = useMapEvents({
     click: () => {
       //console.log('map center:', map.getCenter())
@@ -117,7 +128,7 @@ function MyComponent() {
     if (legends.length == 0) {
       legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', styles.legend);
-        div.innerHTML = ReactDOMServer.renderToString(Leyenda(word, mapstyle));
+        div.innerHTML = ReactDOMServer.renderToString(Leyenda(tituloLeyenda, mapstyle));
         return div;
       };
       legend.addTo(map);
