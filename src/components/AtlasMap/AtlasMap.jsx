@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
 
 import "leaflet/dist/leaflet.css";
-import { GeoJSON, MapContainer, TileLayer, useMap } from 'react-leaflet'
+import { GeoJSON, MapContainer, useMap } from 'react-leaflet'
 import { Typography, Card, CardContent, Fab, Menu, MenuItem } from "@mui/material";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import spania from '../../files/basemap.json'
@@ -228,15 +228,11 @@ const AtlasMap = ({ mapstyle, mapData, setPostalCodeClicked }) => {
       )}
       <div ref={mapContainerRef} style={{ position: 'relative' }}>
         <MapContainer id={'map'} center={[37.96721, -4.92092]} minZoom={5} maxZoom={15} zoom={8} scrollWheelZoom={true} preferCanvas={true} style={{ width: '100%', height: '85vh', marginTop: '10px' }}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
           <GeoJSON
             onEachFeature={(feature, layer) => {
               layer.options.fillColor = "#EFE9DD"
               layer.options.color = "black"
-              layer.options.fillOpacity = 0.15
+              layer.options.fillOpacity = 0.5
               layer.options.weight = 2
               layer.options.opacity = 1
             }} data={JSON.parse(JSON.stringify(spania))} />
