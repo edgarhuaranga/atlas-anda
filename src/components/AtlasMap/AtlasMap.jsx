@@ -233,7 +233,7 @@ const AtlasMap = ({ mapstyle, mapData, setPostalCodeClicked }) => {
               layer.options.fillColor = "#EFE9DD"
               layer.options.color = "black"
               layer.options.fillOpacity = 0.5
-              layer.options.weight = 3
+              layer.options.weight = 2
               layer.options.opacity = 1
             }} data={JSON.parse(JSON.stringify(spania))} />
 
