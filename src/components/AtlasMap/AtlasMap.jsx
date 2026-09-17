@@ -97,7 +97,15 @@ async function addImageToPdf(pdf, canvas, x, y, maxWidth, maxHeight) {
   return h;
 }
 
-async function exportPdf({ mode, mapElement, legendElement, titulo }) {
+function addCommentText(pdf, comment, x, y, width) {
+  if (!comment) return y;
+  pdf.setFontSize(10);
+  const lines = pdf.splitTextToSize(comment, width);
+  pdf.text(lines, x, y);
+  return y + lines.length * 12;
+}
+
+async function exportPdf({ mode, mapElement, legendElement, comment, titulo }) {
   const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
     import('html2canvas'),
     import('jspdf'),
@@ -118,14 +126,22 @@ async function exportPdf({ mode, mapElement, legendElement, titulo }) {
     const canvas = await html2canvas(mapElement, { useCORS: true, ignoreElements: (el) => el.classList?.contains(styles.legend) });
     await addImageToPdf(pdf, canvas, margin, contentTop, pageWidth - margin * 2, contentHeight);
   } else if (mode === 'legend') {
-    const canvas = await html2canvas(legendElement, { useCORS: true });
-    await addImageToPdf(pdf, canvas, margin, contentTop, pageWidth - margin * 2, contentHeight);
+    const contentWidth = pageWidth - margin * 2;
+    const legendCanvas = await html2canvas(legendElement, { useCORS: true });
+    const legendHeight = await addImageToPdf(pdf, legendCanvas, margin, contentTop, contentWidth, contentHeight * 0.7);
+    addCommentText(pdf, comment, margin, contentTop + legendHeight + 16, contentWidth);
   } else {
-    const columnWidth = (pageWidth - margin * 3) / 2;
+    // Map gets 3/4 of the width, legend + description share the remaining 1/4.
+    const mapColumnWidth = (pageWidth - margin * 3) * 0.75;
+    const sideColumnWidth = (pageWidth - margin * 3) * 0.25;
+    const sideColumnX = margin * 2 + mapColumnWidth;
+
     const mapCanvas = await html2canvas(mapElement, { useCORS: true, ignoreElements: (el) => el.classList?.contains(styles.legend) });
     const legendCanvas = await html2canvas(legendElement, { useCORS: true });
-    await addImageToPdf(pdf, mapCanvas, margin, contentTop, columnWidth, contentHeight);
-    await addImageToPdf(pdf, legendCanvas, margin * 2 + columnWidth, contentTop, columnWidth, contentHeight);
+
+    await addImageToPdf(pdf, mapCanvas, margin, contentTop, mapColumnWidth, contentHeight);
+    const legendHeight = await addImageToPdf(pdf, legendCanvas, sideColumnX, contentTop, sideColumnWidth, contentHeight * 0.5);
+    addCommentText(pdf, comment, sideColumnX, contentTop + legendHeight + 16, sideColumnWidth);
   }
 
   pdf.setFontSize(9);
@@ -134,13 +150,13 @@ async function exportPdf({ mode, mapElement, legendElement, titulo }) {
   pdf.save(`${(titulo || 'atlas').replace(/[^\w-]+/g, '_')}.pdf`);
 }
 
-function ExportButton({ mapContainerRef, legendRef, titulo }) {
+function ExportButton({ mapContainerRef, legendRef, comment, titulo }) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleExport = async (mode) => {
     setAnchorEl(null);
     if (!mapContainerRef.current) return;
-    await exportPdf({ mode, mapElement: mapContainerRef.current, legendElement: legendRef.current, titulo });
+    await exportPdf({ mode, mapElement: mapContainerRef.current, legendElement: legendRef.current, comment, titulo });
   };
 
   return (
@@ -155,9 +171,9 @@ function ExportButton({ mapContainerRef, legendRef, titulo }) {
         <FileDownloadIcon />
       </Fab>
       <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={() => setAnchorEl(null)}>
-        <MenuItem onClick={() => handleExport('both')}>Mapa y leyenda (2 columnas)</MenuItem>
+        <MenuItem onClick={() => handleExport('both')}>Mapa (3/4) y leyenda con descripción (1/4)</MenuItem>
         <MenuItem onClick={() => handleExport('map')}>Solo el mapa</MenuItem>
-        <MenuItem onClick={() => handleExport('legend')}>Solo la leyenda</MenuItem>
+        <MenuItem onClick={() => handleExport('legend')}>Solo la leyenda y descripción</MenuItem>
       </Menu>
     </>
   );
@@ -226,7 +242,7 @@ const AtlasMap = ({ mapstyle, mapData, setPostalCodeClicked }) => {
           <MapBehavior titulo={titulo} categories={categories} geoJsonRef={geoJsonRef} showTooltips={showTooltips} legendRef={legendRef} />
 
         </MapContainer>
-        <ExportButton mapContainerRef={mapContainerRef} legendRef={legendRef} titulo={titulo} />
+        <ExportButton mapContainerRef={mapContainerRef} legendRef={legendRef} comment={generalComment} titulo={titulo} />
       </div>
 
       {generalComment && (
