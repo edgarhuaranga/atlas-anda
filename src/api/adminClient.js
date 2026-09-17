@@ -70,6 +70,14 @@ export function deleteAdminPhenomenon(id) {
   return adminFetch(`/api/admin/phenomena/${id}`, { method: 'DELETE' });
 }
 
+export function getAdminPhenomenon(id) {
+  return adminFetch(`/api/admin/phenomena/${id}`);
+}
+
+export function updateAdminPhenomenon(id, data) {
+  return adminFetch(`/api/admin/phenomena/${id}`, { method: 'PUT', body: JSON.stringify(data) });
+}
+
 export function previewImport(type, rows) {
   return adminFetch('/api/admin/import/preview', { method: 'POST', body: JSON.stringify({ type, rows }) });
 }

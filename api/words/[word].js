@@ -3,7 +3,7 @@ const prisma = require('../../lib/db');
 module.exports = async (req, res) => {
   const word = await prisma.word.findUnique({
     where: { word: req.query.word },
-    include: { recordings: { include: { postal: true } } },
+    include: { recordings: { include: { postal: true }, orderBy: { postalCode: 'asc' } } },
   });
 
   if (!word) {

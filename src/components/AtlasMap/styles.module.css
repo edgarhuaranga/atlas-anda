@@ -22,6 +22,10 @@
     border-right-color: transparent;
 }
 
+.leaflet_tooltip_large{
+    font-size: 15px;
+}
+
 .legend{
     background-color: transparent;
     width: 250px;

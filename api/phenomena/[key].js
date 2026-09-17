@@ -4,8 +4,8 @@ module.exports = async (req, res) => {
   const phenomenon = await prisma.phenomenon.findUnique({
     where: { key: req.query.key },
     include: {
-      categories: true,
-      recordings: { include: { postal: true, category: true } },
+      categories: { orderBy: { id: 'asc' } },
+      recordings: { include: { postal: true, category: true }, orderBy: { postalCode: 'asc' } },
     },
   });
 
@@ -32,6 +32,7 @@ module.exports = async (req, res) => {
   res.status(200).json({
     key: phenomenon.key,
     label: phenomenon.label,
+    comment: phenomenon.comment,
     categories: phenomenon.categories.map((c) => ({ type: c.type, color: c.color })),
     type: 'FeatureCollection',
     features,

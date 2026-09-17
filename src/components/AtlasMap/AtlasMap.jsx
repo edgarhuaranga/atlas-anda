@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
 
 import "leaflet/dist/leaflet.css";
 import { GeoJSON, MapContainer, useMap } from 'react-leaflet'
-import { Typography, Card, CardContent } from "@mui/material";
+import { Typography, Card, CardContent, Fab, Menu, MenuItem } from "@mui/material";
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import spania from '../../files/basemap.json'
 import * as turf from '@turf/turf'
 import L from "leaflet";
@@ -14,6 +15,8 @@ import styles from "./styles.module.css";
 // Leaflet has to reposition every tooltip DOM node on every animation frame.
 // Tooltips only open once the user has zoomed in past this point.
 const TOOLTIP_MIN_ZOOM = 10;
+// Past this zoom, few enough polygons are on screen that larger labels stay readable.
+const TOOLTIP_LARGE_ZOOM = 12;
 
 function Leyenda(titulo, categories) {
   var table = <></>
@@ -39,7 +42,7 @@ function Leyenda(titulo, categories) {
   )
 }
 
-function MapBehavior({ titulo, categories, geoJsonRef, showTooltips }) {
+function MapBehavior({ titulo, categories, geoJsonRef, showTooltips, legendRef }) {
   const map = useMap();
 
   useEffect(() => {
@@ -52,20 +55,25 @@ function MapBehavior({ titulo, categories, geoJsonRef, showTooltips }) {
     legend.onAdd = function () {
       const div = L.DomUtil.create('div', styles.legend);
       div.innerHTML = ReactDOMServer.renderToString(Leyenda(titulo, categories));
+      legendRef.current = div;
       return div;
     };
     legend.addTo(map);
-    return () => legend.remove();
-  }, [map, titulo, categories]);
+    return () => { legend.remove(); legendRef.current = null; };
+  }, [map, titulo, categories, legendRef]);
 
   useEffect(() => {
     if (!showTooltips) return;
 
     const updateTooltips = () => {
-      const open = map.getZoom() >= TOOLTIP_MIN_ZOOM;
+      const zoom = map.getZoom();
+      const open = zoom >= TOOLTIP_MIN_ZOOM;
+      const large = zoom >= TOOLTIP_LARGE_ZOOM;
       geoJsonRef.current?.eachLayer((layer) => {
         if (open) layer.openTooltip();
         else layer.closeTooltip();
+        const el = layer.getTooltip()?.getElement();
+        if (el) el.classList.toggle(styles.leaflet_tooltip_large, large);
       });
     };
 
@@ -77,8 +85,88 @@ function MapBehavior({ titulo, categories, geoJsonRef, showTooltips }) {
   return null;
 }
 
+function timestamp() {
+  return new Date().toLocaleString('es-ES');
+}
+
+async function addImageToPdf(pdf, canvas, x, y, maxWidth, maxHeight) {
+  const ratio = Math.min(maxWidth / canvas.width, maxHeight / canvas.height);
+  const w = canvas.width * ratio;
+  const h = canvas.height * ratio;
+  pdf.addImage(canvas.toDataURL('image/png'), 'PNG', x, y, w, h);
+  return h;
+}
+
+async function exportPdf({ mode, mapElement, legendElement, titulo }) {
+  const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
+    import('html2canvas'),
+    import('jspdf'),
+  ]);
+
+  const pdf = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+  const pageWidth = pdf.internal.pageSize.getWidth();
+  const pageHeight = pdf.internal.pageSize.getHeight();
+  const margin = 24;
+
+  pdf.setFontSize(14);
+  pdf.text(titulo || 'Atlas', margin, margin);
+
+  const contentTop = margin + 16;
+  const contentHeight = pageHeight - contentTop - margin - 16;
+
+  if (mode === 'map') {
+    const canvas = await html2canvas(mapElement, { useCORS: true, ignoreElements: (el) => el.classList?.contains(styles.legend) });
+    await addImageToPdf(pdf, canvas, margin, contentTop, pageWidth - margin * 2, contentHeight);
+  } else if (mode === 'legend') {
+    const canvas = await html2canvas(legendElement, { useCORS: true });
+    await addImageToPdf(pdf, canvas, margin, contentTop, pageWidth - margin * 2, contentHeight);
+  } else {
+    const columnWidth = (pageWidth - margin * 3) / 2;
+    const mapCanvas = await html2canvas(mapElement, { useCORS: true, ignoreElements: (el) => el.classList?.contains(styles.legend) });
+    const legendCanvas = await html2canvas(legendElement, { useCORS: true });
+    await addImageToPdf(pdf, mapCanvas, margin, contentTop, columnWidth, contentHeight);
+    await addImageToPdf(pdf, legendCanvas, margin * 2 + columnWidth, contentTop, columnWidth, contentHeight);
+  }
+
+  pdf.setFontSize(9);
+  pdf.text(`Exportado: ${timestamp()}`, margin, pageHeight - margin / 2);
+
+  pdf.save(`${(titulo || 'atlas').replace(/[^\w-]+/g, '_')}.pdf`);
+}
+
+function ExportButton({ mapContainerRef, legendRef, titulo }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleExport = async (mode) => {
+    setAnchorEl(null);
+    if (!mapContainerRef.current) return;
+    await exportPdf({ mode, mapElement: mapContainerRef.current, legendElement: legendRef.current, titulo });
+  };
+
+  return (
+    <>
+      <Fab
+        size="small"
+        color="primary"
+        onClick={(e) => setAnchorEl(e.currentTarget)}
+        sx={{ position: 'absolute', bottom: 16, left: 16, zIndex: 1000 }}
+        title="Exportar a PDF"
+      >
+        <FileDownloadIcon />
+      </Fab>
+      <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={() => setAnchorEl(null)}>
+        <MenuItem onClick={() => handleExport('both')}>Mapa y leyenda (2 columnas)</MenuItem>
+        <MenuItem onClick={() => handleExport('map')}>Solo el mapa</MenuItem>
+        <MenuItem onClick={() => handleExport('legend')}>Solo la leyenda</MenuItem>
+      </Menu>
+    </>
+  );
+}
+
 const AtlasMap = ({ mapstyle, mapData, setPostalCodeClicked }) => {
   const geoJsonRef = useRef(null);
+  const legendRef = useRef(null);
+  const mapContainerRef = useRef(null);
 
   if (!mapData) return null;
 
@@ -86,6 +174,7 @@ const AtlasMap = ({ mapstyle, mapData, setPostalCodeClicked }) => {
   const titulo = mapstyle === "fenomeno" ? mapData.label : mapData.word;
   const categories = mapstyle === "fenomeno" ? mapData.categories : null;
   const showTooltips = mapstyle === "palabra";
+  const generalComment = mapstyle === "fenomeno" ? mapData.comment : null;
 
   let secondLayer = null;
   if (features && features.length > 0) {
@@ -121,21 +210,32 @@ const AtlasMap = ({ mapstyle, mapData, setPostalCodeClicked }) => {
       {(!features || features.length === 0) && (
         <Typography sx={{ padding: 2 }}>Todavía no hay datos registrados para "{titulo}".</Typography>
       )}
-      <MapContainer id={'map'} center={[37.96721, -4.92092]} minZoom={7} maxZoom={15} zoom={8} scrollWheelZoom={true} preferCanvas={true} style={{ width: '100%', height: '85vh', marginTop: '10px' }}>
-        <GeoJSON
-          onEachFeature={(feature, layer) => {
-            layer.options.fillColor = "#EFE9DD"
-            layer.options.color = "black"
-            layer.options.fillOpacity = 0.5
-            layer.options.weight = 3
-            layer.options.opacity = 1
-          }} data={JSON.parse(JSON.stringify(spania))} />
+      <div ref={mapContainerRef} style={{ position: 'relative' }}>
+        <MapContainer id={'map'} center={[37.96721, -4.92092]} minZoom={5} maxZoom={15} zoom={8} scrollWheelZoom={true} preferCanvas={true} style={{ width: '100%', height: '85vh', marginTop: '10px' }}>
+          <GeoJSON
+            onEachFeature={(feature, layer) => {
+              layer.options.fillColor = "#EFE9DD"
+              layer.options.color = "black"
+              layer.options.fillOpacity = 0.5
+              layer.options.weight = 3
+              layer.options.opacity = 1
+            }} data={JSON.parse(JSON.stringify(spania))} />
 
-        {secondLayer}
+          {secondLayer}
 
-        <MapBehavior titulo={titulo} categories={categories} geoJsonRef={geoJsonRef} showTooltips={showTooltips} />
+          <MapBehavior titulo={titulo} categories={categories} geoJsonRef={geoJsonRef} showTooltips={showTooltips} legendRef={legendRef} />
 
-      </MapContainer>
+        </MapContainer>
+        <ExportButton mapContainerRef={mapContainerRef} legendRef={legendRef} titulo={titulo} />
+      </div>
+
+      {generalComment && (
+        <Card elevation={1} sx={{ mt: 2 }}>
+          <CardContent>
+            <Typography variant="body2">{generalComment}</Typography>
+          </CardContent>
+        </Card>
+      )}
     </>
   )
 };

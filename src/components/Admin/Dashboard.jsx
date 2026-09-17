@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Tabs, Tab, Typography, Button, IconButton, List, ListItem, ListItemText, CircularProgress, CssBaseline } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { getAdminWords, deleteAdminWord, getAdminPhenomena, deleteAdminPhenomenon, logout } from '../../api/adminClient';
+import { getAdminWords, deleteAdminWord, logout } from '../../api/adminClient';
 import BulkImport from './BulkImport';
+import PhenomenaList from './PhenomenaList';
 
 function EntityList({ label, fetcher, onDelete }) {
   const [items, setItems] = useState(null);
@@ -55,7 +56,7 @@ const Dashboard = () => {
           <Tab label="Importar" />
         </Tabs>
         {tab === 0 && <EntityList label="palabras" fetcher={getAdminWords} onDelete={deleteAdminWord} />}
-        {tab === 1 && <EntityList label="fenómenos" fetcher={getAdminPhenomena} onDelete={deleteAdminPhenomenon} />}
+        {tab === 1 && <PhenomenaList />}
         {tab === 2 && <BulkImport />}
       </Box>
     </>
