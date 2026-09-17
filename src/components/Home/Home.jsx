@@ -1,43 +1,47 @@
-import React, { useState } from "react";
-import { CssBaseline,  Grid, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, TextField} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { CssBaseline,  Grid, Radio, RadioGroup, FormControlLabel, FormControl, TextField} from "@mui/material";
 import Searcher from "../Searcher/Searcher";
-import words from '../../data/words.json'
-import phenomenoms from '../../data/phenomenoms.json'
+import { getWords, getPhenomena } from "../../api/client";
 import Hero from '../Hero/Hero';
 
 const Home = () => {
-    
-    const searchableWords = words.map((value, key)=>{
-        return value.word;
-    });
 
-    searchableWords.sort();
-    
-    const searchablePhenomns = phenomenoms.map((value, key) => {
-        return {"k": value.key, "w":value.word};
-    });
-
-    const [items, setItems] = useState(searchableWords);
-    const [phenoms, setPhenoms] = useState(searchablePhenomns);
+    const [searchableWords, setSearchableWords] = useState([]);
+    const [searchablePhenomns, setSearchablePhenomns] = useState([]);
+    const [items, setItems] = useState([]);
+    const [phenoms, setPhenoms] = useState([]);
     const [value, setValue] = useState('palabra');
 
+    useEffect(() => {
+        getWords().then((words) => {
+            const sorted = words.map((w) => w.word).sort();
+            setSearchableWords(sorted);
+            setItems(sorted);
+        });
+        getPhenomena().then((phenomena) => {
+            const mapped = phenomena.map((p) => ({ k: p.key, w: p.label }));
+            setSearchablePhenomns(mapped);
+            setPhenoms(mapped);
+        });
+    }, []);
+
     const requestSearch = (searchedVal) => {
-        const filteredItems = searchableWords.filter((item) => { 
+        const filteredItems = searchableWords.filter((item) => {
             return item.toLowerCase().includes(searchedVal.toLowerCase());
         });
-        const filteredPhenoms = searchablePhenomns.filter((item) => { 
-            return item.w.toLowerCase().includes(searchedVal.toLowerCase()); 
+        const filteredPhenoms = searchablePhenomns.filter((item) => {
+            return item.w.toLowerCase().includes(searchedVal.toLowerCase());
         });
-        
+
         setItems(filteredItems);
         setPhenoms(filteredPhenoms);
     };
 
     const handleChange = (event) => {
         setValue(event.target.value);
-    }    
+    }
 
-    
+
     return(
         <>
         <CssBaseline enableColorScheme/>
@@ -62,12 +66,12 @@ const Home = () => {
                     </FormControl>
                 </Grid>
             </Grid>
-            
+
             <Grid item xs={12} pl={3}>
                 {(value === 'palabra') && <Searcher items={items} type={value}/>}
                 {(value === 'fenomeno') && <Searcher items={phenoms} type={value}/>}
             </Grid>
-            
+
         </Grid>
     </>
     )

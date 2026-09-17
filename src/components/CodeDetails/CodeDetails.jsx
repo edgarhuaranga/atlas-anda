@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip} from "@mui/material"; 
+import { Box, Typography, Card, CardContent} from "@mui/material";
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
@@ -10,7 +10,7 @@ const CodeDetails = ({place, selected, refProp}) => {
   let backgroundcolorStandar = '#fafafa';
   if(selected){
     refProp?.current?.scrollIntoView({behavior: "smooth", block:"start"})
-  } 
+  }
 
   return(
     <Card elevation={2}>
@@ -18,12 +18,13 @@ const CodeDetails = ({place, selected, refProp}) => {
         <Typography gutterBottom variant="h5">{place.lugar}</Typography>
         <Box display="flex" justifyContent={"space-between"}>
           <Typography variant="subtitle1">Código postal: </Typography>
-          <Typography gutterBottom variant="subtitle1" sx={{fontWeight: 'bold'}}>{place.name}</Typography>  
+          <Typography gutterBottom variant="subtitle1" sx={{fontWeight: 'bold'}}>{place.name}</Typography>
         </Box>
-        <Box display="flex" justifyContent={"space-between"}>
-          <AudioPlayer src="/atlas-anda/Probando.mp3" onPlay={e => console.log("onPlay")}
-          />  
-        </Box>
+        {place.audioUrl && (
+          <Box display="flex" justifyContent={"space-between"}>
+            <AudioPlayer src={place.audioUrl} />
+          </Box>
+        )}
         <br />
         <Typography variant="body2" display="block" gutterBottom>
          {place.comment}

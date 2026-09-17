@@ -1,0 +1,99 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PostalCode {
+  code       String  @id
+  placeName  String
+  comunidad  String?
+  provincia  String?
+  geometry   Json
+
+  wordRecordings       WordRecording[]
+  phenomenonRecordings PhenomenonRecording[]
+
+  @@map("postal_codes")
+}
+
+model Word {
+  id         Int      @id @default(autoincrement())
+  word       String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  recordings WordRecording[]
+
+  @@map("words")
+}
+
+model WordRecording {
+  id         Int        @id @default(autoincrement())
+  wordId     Int
+  word       Word       @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  postalCode String
+  postal     PostalCode @relation(fields: [postalCode], references: [code])
+  variation  String?
+  audioUrl   String?
+  comment    String?
+
+  @@unique([wordId, postalCode])
+  @@index([wordId])
+  @@map("word_recordings")
+}
+
+model Phenomenon {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  label     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  categories PhenomenonCategory[]
+  recordings PhenomenonRecording[]
+
+  @@map("phenomena")
+}
+
+model PhenomenonCategory {
+  id           Int        @id @default(autoincrement())
+  phenomenonId Int
+  phenomenon   Phenomenon @relation(fields: [phenomenonId], references: [id], onDelete: Cascade)
+  type         String
+  color        String
+
+  recordings PhenomenonRecording[]
+
+  @@unique([phenomenonId, type])
+  @@map("phenomenon_categories")
+}
+
+model PhenomenonRecording {
+  id           Int                  @id @default(autoincrement())
+  phenomenonId Int
+  phenomenon   Phenomenon           @relation(fields: [phenomenonId], references: [id], onDelete: Cascade)
+  postalCode   String
+  postal       PostalCode           @relation(fields: [postalCode], references: [code])
+  categoryId   Int?
+  category     PhenomenonCategory?  @relation(fields: [categoryId], references: [id])
+  audioUrl     String?
+  comment      String?
+
+  @@unique([phenomenonId, postalCode])
+  @@index([phenomenonId])
+  @@map("phenomenon_recordings")
+}
+
+model AdminUser {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+
+  @@map("admin_users")
+}

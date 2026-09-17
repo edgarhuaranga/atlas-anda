@@ -1,49 +1,29 @@
 import React, {useState, useEffect, createRef} from "react";
-import { Grid } from "@mui/material";   
+import { Grid, Typography } from "@mui/material";
 import CodeDetails from "../CodeDetails/CodeDetails";
-import { useParams } from 'react-router-dom';
 import 'react-h5-audio-player/lib/styles.css';
-import andalucia from '../../data/postal_codes.json'
-import words from '../../data/words.json'
-import phenomenos from '../../data/phenomenoms.json'
 
-function filterMap(word, mapstyle){
-  
-  let result = words.filter((w) => w.word === word)[0];
-  if(mapstyle === "fenomeno"){
-    result = phenomenos.filter((w) => w.key === word)[0];
-  }
-
-  var filteredMap = andalucia.features.filter((feature) => {
-    for(var i=0; i<result.distribution.length; i++){
-      let pc = result.distribution[i].postalcode;
-      if(feature.properties.name === pc){
-        feature.properties["variation"] = result.distribution[i].variation
-        feature.properties["audioURL"] = result.distribution[i].audioURL
-        feature.properties["comment"] = result.distribution[i].comment
-        feature.properties["frequency"] = result.distribution[i].frequency
-        return feature
-      }
-    }
-  })
-  console.log(filteredMap);
-  return filteredMap;
-}
-
-
-const List = ( {postalCodeClicked}) => {  
-  let { word } = useParams();
-  let { mapstyle } = useParams();
+const List = ({ features, postalCodeClicked }) => {
   const [elRefs, setElRefs] = useState([]);
-  andalucia.features = filterMap(word, mapstyle);
-  
-  const places = andalucia.features;
+  const places = features || [];
 
   useEffect(()=>{
     const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef());
     setElRefs(refs);
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [places?.length])
 
+  if (features === undefined) {
+    return null;
+  }
+
+  if (places.length === 0) {
+    return (
+      <div sx={{padding: '25px'}}>
+        <Typography sx={{ marginTop: '10px' }}>Todavía no hay datos registrados para esta entrada.</Typography>
+      </div>
+    );
+  }
 
   return(
       <div sx={{padding: '25px'}}>

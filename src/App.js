@@ -1,34 +1,38 @@
-import React, {useState} from "react";
-import { BrowserRouter as Router, Routes, Route, useParams, } from "react-router-dom";
-import { CssBaseline, Grid } from "@mui/material";
+import React, {useState, useEffect} from "react";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import { CssBaseline, Grid, Typography } from "@mui/material";
 import Header from "./components/Header/Header";
 import List from "./components/List/List";
 import AtlasMap from './components/AtlasMap/AtlasMap';
-import andalucia from './data/postal_codes.json';
 import Home from './components/Home/Home';
-
-
-function getMultipleRandom(arr, num) {
-  const shuffled = [...arr].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, num);
-}
+import { getWordMap, getPhenomenonMap } from './api/client';
 
 
 function WordMap() {
-  let { word } = useParams();
-  let {mapstyle} = useParams();
+  const { mapstyle, word } = useParams();
   const [postalCodeClicked, setPostalCodeClicked] = useState(null);
+  const [mapData, setMapData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setMapData(null);
+    setError(null);
+    setPostalCodeClicked(null);
+    const fetchMap = mapstyle === "fenomeno" ? getPhenomenonMap(word) : getWordMap(word);
+    fetchMap.then(setMapData).catch(() => setError(true));
+  }, [mapstyle, word]);
 
   return (
     <>
       <CssBaseline />
       <Header />
+      {error && <Typography sx={{ padding: 2 }}>No se encontró "{word}".</Typography>}
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={8}>
-          <AtlasMap polygons={andalucia.features} data={andalucia} setPostalCodeClicked={setPostalCodeClicked}/>
+          <AtlasMap mapstyle={mapstyle} mapData={mapData} setPostalCodeClicked={setPostalCodeClicked}/>
         </Grid>
         <Grid item xs={12} md={4}>
-          {<List postalCodeClicked={postalCodeClicked}/>}
+          <List features={mapData?.features} postalCodeClicked={postalCodeClicked}/>
         </Grid>
       </Grid>
 
@@ -38,17 +42,11 @@ function WordMap() {
 
 
 const App = () => {
-
-  //const finalData = getMultipleRandom(andalucia.features, 300);
-  //andalucia.features = finalData;
-
   return (
     <Router>
       <Routes>
-        <Route path="/:mapstyle/:word" element={<WordMap/>} />        
+        <Route path="/:mapstyle/:word" element={<WordMap/>} />
         <Route path="/" element={<Home />} />
-        <Route path="/atlas-anda/:mapstyle/:word" element={<WordMap/>} />
-        <Route path="/atlas-anda/" element={<Home/>} />
       </Routes>
     </Router>
   );
