@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { Box, Button, MenuItem, Select, Typography, Table, TableHead, TableRow, TableCell, TableBody, Alert } from '@mui/material';
+import { Box, Button, MenuItem, Select, Typography, Table, TableHead, TableRow, TableCell, TableBody, Alert, Link } from '@mui/material';
 import Papa from 'papaparse';
 import { previewImport, commitImport } from '../../api/adminClient';
 
 const COLUMN_HINTS = {
   wordRecordings: 'Columnas: word, postalcode, variation, audioUrl, comment',
   phenomenonRecordings: 'Columnas: key, label, postalcode, category, color, audioUrl, comment',
+};
+
+const EXAMPLE_FILES = {
+  wordRecordings: '/examples/word-recordings-example.csv',
+  phenomenonRecordings: '/examples/phenomenon-recordings-example.csv',
 };
 
 const BulkImport = () => {
@@ -66,7 +71,9 @@ const BulkImport = () => {
         <MenuItem value="wordRecordings">Grabaciones de palabras</MenuItem>
         <MenuItem value="phenomenonRecordings">Grabaciones de fenómenos</MenuItem>
       </Select>
-      <Typography variant="body2" sx={{ mb: 1 }}>{COLUMN_HINTS[type]}</Typography>
+      <Typography variant="body2" sx={{ mb: 1 }}>
+        {COLUMN_HINTS[type]} — <Link href={EXAMPLE_FILES[type]} download>descargar ejemplo</Link>
+      </Typography>
 
       <Button variant="outlined" component="label" sx={{ mb: 2 }}>
         Elegir archivo CSV o JSON
