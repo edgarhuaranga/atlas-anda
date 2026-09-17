@@ -6,6 +6,9 @@ import List from "./components/List/List";
 import AtlasMap from './components/AtlasMap/AtlasMap';
 import Home from './components/Home/Home';
 import { getWordMap, getPhenomenonMap } from './api/client';
+import AdminLogin from './components/Admin/Login';
+import AdminDashboard from './components/Admin/Dashboard';
+import RequireAuth from './components/Admin/RequireAuth';
 
 
 function WordMap() {
@@ -45,6 +48,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/admin/login" element={<AdminLogin/>} />
+        <Route path="/admin" element={<RequireAuth><AdminDashboard/></RequireAuth>} />
         <Route path="/:mapstyle/:word" element={<WordMap/>} />
         <Route path="/" element={<Home />} />
       </Routes>
