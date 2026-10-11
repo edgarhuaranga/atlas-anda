@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Tabs, Tab, Typography, Button, IconButton, List, ListItem, ListItemText, CircularProgress, CssBaseline } from '@mui/material';
+import { Box, Tabs, Tab, Typography, Button, IconButton, List, ListItem, ListItemText, CircularProgress, CssBaseline, Switch, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { getAdminWords, deleteAdminWord, logout } from '../../api/adminClient';
+import { getAdminWords, deleteAdminWord, updateAdminWord, logout } from '../../api/adminClient';
 import BulkImport from './BulkImport';
 import PhenomenaList from './PhenomenaList';
 
-function EntityList({ label, fetcher, onDelete }) {
+function EntityList({ label, fetcher, onDelete, onTogglePublished }) {
   const [items, setItems] = useState(null);
 
   const load = () => fetcher().then(setItems);
@@ -15,22 +15,45 @@ function EntityList({ label, fetcher, onDelete }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const confirmDelete = async (item) => {
+    const name = item.word || item.label;
+    if (!window.confirm(`¿Borrar "${name}" y sus ${item.recordingsCount} grabaciones? Esta acción no se puede deshacer.`)) return;
+    await onDelete(item.id);
+    load();
+  };
+
   if (!items) return <CircularProgress sx={{ mt: 2 }} />;
 
   return (
     <Box>
       <Typography variant="h6" sx={{ mt: 2 }}>{items.length} {label}</Typography>
+      <Typography variant="body2" color="text.secondary">
+        El interruptor publica u oculta la entrada del atlas público (los datos se conservan).
+      </Typography>
       <List dense sx={{ maxHeight: 500, overflow: 'auto' }}>
         {items.map((item) => (
           <ListItem
             key={item.id}
             secondaryAction={
-              <IconButton edge="end" onClick={async () => { await onDelete(item.id); load(); }}>
-                <DeleteIcon />
-              </IconButton>
+              <>
+                <Tooltip title={item.published ? 'Publicado' : 'Oculto'}>
+                  <Switch
+                    size="small"
+                    checked={item.published}
+                    onChange={async () => { await onTogglePublished(item.id, !item.published); load(); }}
+                  />
+                </Tooltip>
+                <IconButton edge="end" onClick={() => confirmDelete(item)}>
+                  <DeleteIcon />
+                </IconButton>
+              </>
             }
           >
-            <ListItemText primary={item.word || item.label} secondary={`${item.recordingsCount} grabaciones`} />
+            <ListItemText
+              primary={item.word || item.label}
+              secondary={`${item.recordingsCount} grabaciones`}
+              sx={{ opacity: item.published ? 1 : 0.5 }}
+            />
           </ListItem>
         ))}
       </List>
@@ -55,7 +78,14 @@ const Dashboard = () => {
           <Tab label="Fenómenos" />
           <Tab label="Importar" />
         </Tabs>
-        {tab === 0 && <EntityList label="palabras" fetcher={getAdminWords} onDelete={deleteAdminWord} />}
+        {tab === 0 && (
+          <EntityList
+            label="palabras"
+            fetcher={getAdminWords}
+            onDelete={deleteAdminWord}
+            onTogglePublished={(id, published) => updateAdminWord(id, { published })}
+          />
+        )}
         {tab === 1 && <PhenomenaList />}
         {tab === 2 && <BulkImport />}
       </Box>

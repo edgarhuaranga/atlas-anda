@@ -4,10 +4,10 @@ const prisma = require('../../../lib/db');
 module.exports = requireAdmin(async (req, res) => {
   if (req.method === 'GET') {
     const phenomena = await prisma.phenomenon.findMany({
-      select: { id: true, key: true, label: true, _count: { select: { recordings: true } } },
+      select: { id: true, key: true, label: true, published: true, _count: { select: { recordings: true } } },
       orderBy: { label: 'asc' },
     });
-    res.status(200).json(phenomena.map((p) => ({ id: p.id, key: p.key, label: p.label, recordingsCount: p._count.recordings })));
+    res.status(200).json(phenomena.map((p) => ({ id: p.id, key: p.key, label: p.label, published: p.published, recordingsCount: p._count.recordings })));
     return;
   }
 

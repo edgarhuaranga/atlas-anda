@@ -21,11 +21,12 @@ module.exports = requireAdmin(async (req, res) => {
   }
 
   if (req.method === 'PUT') {
-    const { key, label, comment } = req.body || {};
+    const { key, label, comment, published } = req.body || {};
     const data = {};
     if (key !== undefined) data.key = key;
     if (label !== undefined) data.label = label;
     if (comment !== undefined) data.comment = comment;
+    if (published !== undefined) data.published = published;
     const updated = await prisma.phenomenon.update({ where: { id }, data });
     res.status(200).json(updated);
     return;

@@ -6,7 +6,9 @@ module.exports = async (req, res) => {
     include: { recordings: { include: { postal: true }, orderBy: { postalCode: 'asc' } } },
   });
 
-  if (!word) {
+  // Unpublished entries are withheld from the public API entirely, not just
+  // hidden from the menu — otherwise unfinished data is still downloadable.
+  if (!word || !word.published) {
     res.status(404).json({ error: 'Word not found' });
     return;
   }

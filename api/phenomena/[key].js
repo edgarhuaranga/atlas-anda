@@ -9,7 +9,9 @@ module.exports = async (req, res) => {
     },
   });
 
-  if (!phenomenon) {
+  // Unpublished entries are withheld from the public API entirely, not just
+  // hidden from the menu — otherwise unfinished data is still downloadable.
+  if (!phenomenon || !phenomenon.published) {
     res.status(404).json({ error: 'Phenomenon not found' });
     return;
   }
@@ -29,11 +31,17 @@ module.exports = async (req, res) => {
     },
   }));
 
+  // The legend only lists categories that actually have data at some point,
+  // so pre-defined categories can sit unused without cluttering the map.
+  const usedCategoryIds = new Set(phenomenon.recordings.map((r) => r.categoryId).filter(Boolean));
+
   res.status(200).json({
     key: phenomenon.key,
     label: phenomenon.label,
     comment: phenomenon.comment,
-    categories: phenomenon.categories.map((c) => ({ type: c.type, color: c.color })),
+    categories: phenomenon.categories
+      .filter((c) => usedCategoryIds.has(c.id))
+      .map((c) => ({ type: c.type, color: c.color })),
     type: 'FeatureCollection',
     features,
   });

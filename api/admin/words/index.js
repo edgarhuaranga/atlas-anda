@@ -4,10 +4,10 @@ const prisma = require('../../../lib/db');
 module.exports = requireAdmin(async (req, res) => {
   if (req.method === 'GET') {
     const words = await prisma.word.findMany({
-      select: { id: true, word: true, _count: { select: { recordings: true } } },
+      select: { id: true, word: true, published: true, _count: { select: { recordings: true } } },
       orderBy: { word: 'asc' },
     });
-    res.status(200).json(words.map((w) => ({ id: w.id, word: w.word, recordingsCount: w._count.recordings })));
+    res.status(200).json(words.map((w) => ({ id: w.id, word: w.word, published: w.published, recordingsCount: w._count.recordings })));
     return;
   }
 

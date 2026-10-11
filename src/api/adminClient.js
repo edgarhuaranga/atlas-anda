@@ -62,6 +62,10 @@ export function deleteAdminWord(id) {
   return adminFetch(`/api/admin/words/${id}`, { method: 'DELETE' });
 }
 
+export function updateAdminWord(id, data) {
+  return adminFetch(`/api/admin/words/${id}`, { method: 'PUT', body: JSON.stringify(data) });
+}
+
 export function getAdminPhenomena() {
   return adminFetch('/api/admin/phenomena');
 }

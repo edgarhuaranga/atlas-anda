@@ -11,8 +11,11 @@ module.exports = requireAdmin(async (req, res) => {
   }
 
   if (req.method === 'PUT') {
-    const { word } = req.body || {};
-    const updated = await prisma.word.update({ where: { id }, data: { word } });
+    const { word, published } = req.body || {};
+    const data = {};
+    if (word !== undefined) data.word = word;
+    if (published !== undefined) data.published = published;
+    const updated = await prisma.word.update({ where: { id }, data });
     res.status(200).json(updated);
     return;
   }

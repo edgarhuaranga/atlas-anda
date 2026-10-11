@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Button, IconButton, List, ListItem, ListItemText, ListItemButton, CircularProgress, TextField, Collapse } from '@mui/material';
+import { Box, Typography, Button, IconButton, List, ListItem, ListItemText, ListItemButton, CircularProgress, TextField, Collapse, Switch, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { getAdminPhenomena, deleteAdminPhenomenon, getAdminPhenomenon, updateAdminPhenomenon } from '../../api/adminClient';
 
@@ -29,14 +29,30 @@ function PhenomenonRow({ item, onDeleted }) {
     <>
       <ListItem
         secondaryAction={
-          <IconButton edge="end" onClick={async () => { await deleteAdminPhenomenon(item.id); onDeleted(); }}>
-            <DeleteIcon />
-          </IconButton>
+          <>
+            <Tooltip title={item.published ? 'Publicado' : 'Oculto'}>
+              <Switch
+                size="small"
+                checked={item.published}
+                onChange={async () => { await updateAdminPhenomenon(item.id, { published: !item.published }); onDeleted(); }}
+              />
+            </Tooltip>
+            <IconButton
+              edge="end"
+              onClick={async () => {
+                if (!window.confirm(`¿Borrar "${item.label}" y sus ${item.recordingsCount} grabaciones? Esta acción no se puede deshacer.`)) return;
+                await deleteAdminPhenomenon(item.id);
+                onDeleted();
+              }}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </>
         }
         disablePadding
       >
         <ListItemButton onClick={toggle}>
-          <ListItemText primary={item.label} secondary={`${item.recordingsCount} grabaciones`} />
+          <ListItemText primary={item.label} secondary={`${item.recordingsCount} grabaciones`} sx={{ opacity: item.published ? 1 : 0.5 }} />
         </ListItemButton>
       </ListItem>
       <Collapse in={open} unmountOnExit>
